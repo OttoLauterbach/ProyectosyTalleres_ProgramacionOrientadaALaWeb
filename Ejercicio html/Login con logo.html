@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio de Sesión - CinexUnidos</title>
+</head>
+<body>
+  <main>
+    <div class="login-header">
+      <img src="res\logocinex.png" width="200px" alt="Logo Cinex">
+      <h2>Inicio de Sesión</h2>
+    </div>
+    <form action="login.php" method="post">
+      <table border=0 style="border: 1.2px solid #ccc; border-spacing: 2px; width: auto;">
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="username">Usuario:</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <input type="text" id="username" name="username" required />
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="password">Contraseña:</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <input type="password" id="password" name="password" required />
+          </td>
+        </tr>
+        <tr>
+          <td colspan=2 style="border: 1.2px solid #ccc; padding: 5px; text-align: center;">
+            <button type="submit">Iniciar Sesión</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </main>
+</body>
+</html>

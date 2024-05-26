@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagos - CinexUnidos</title>
+</head>
+<body>
+  <main>
+    <div class="register-header">
+      <img src="res\logocinex.png" width="200px" alt="Logo Cinex">
+      <h2>Introduzca datos </h2>
+    </div>
+    <form action="register.php" method="post">
+      <table border="0" style="border: 1.2px solid #ccc; border-spacing: 2px; width: auto;">
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="name">Nombre completo (Nombre y apellidos):</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <input type="text" id="name" name="name" required />
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="email">Ingrese su Cédula:</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <select id="cedula-prefix" name="cedula-prefix" required>
+              <option value="" disabled selected>Tipo</option>
+              <option value="V">V</option>
+              <option value="E">E</option>
+              <option value="P">P</option>
+              <option value="J">J</option>
+              <option value="G">G</option>
+            </select>
+            <input type="text" id="cedula-number" name="cedula-number" required />
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="birthdate">Fecha de nacimiento:</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <input type="date" id="birthdate" name="birthdate" required />
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="cardholder-name">Ingrese CVV (Números parte trasera):</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <input type="text" id="cardholder-name" name="cardholder-name" required />
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="card-number">Número de tarjeta:</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <input type="text" id="card-number" name="card-number" required />
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="expiration-date">Fecha de vencimiento:</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <input type="month" id="expiration-date" name="expiration-date" required />
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <label for="cvv">Tipo de cuenta:</label>
+          </td>
+          <td style="border: 1.2px solid #ccc; padding: 5px;">
+            <select id="account-type" name="account-type" required>
+              <option value="" disabled selected>Seleccione tipo de cuenta</option>
+              <option value="Corriente">Corriente</option>
+              <option value="Ahorro">Ahorro</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="border: 1.2px solid #ccc; padding: 5px; text-align: center;">
+            <button type="submit">Pagar</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </main>
+</body>
+</html>
