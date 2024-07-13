@@ -227,22 +227,30 @@
         document.addEventListener('DOMContentLoaded', function() {
             const cinemaSelect = document.getElementById('cinemaSelect');
             const movieSelect = document.getElementById('movieSelect');
-            const option = document.createElement('option');
-            option.value = "0";
-            option.textContent = "Seleccionar";
-            cinemaSelect.appendChild(option);
 
-            fetch('https://cinexunidos-production.up.railway.app/theatres')
-                .then(response => response.json())
-                .then(data => {
+            // Add "Seleccionar" option to cinemaSelect
+            const defaultCinemaOption = document.createElement('option');
+            defaultCinemaOption.value = "0";
+            defaultCinemaOption.textContent = "Seleccionar";
+            cinemaSelect.appendChild(defaultCinemaOption);
+
+            // Fetch cinema data only when the dropdown is clicked
+            cinemaSelect.addEventListener('click', function () {
+                // Check if options have already been loaded
+                if (cinemaSelect.options.length <= 1) { // Only "Seleccionar" is there
+                fetch('https://cinexunidos-production.up.railway.app/theatres')
+                    .then(response => response.json())
+                    .then(data => {
                     data.forEach(theatres => {
                         const option = document.createElement('option');
                         option.value = theatres.id;
                         option.textContent = theatres.name;
                         cinemaSelect.appendChild(option);
                     });
-                })
-                .catch(error => console.error('Error fetching cinemas:', error));
+                    })
+                    .catch(error => console.error('Error fetching cinemas:', error));
+                } 
+            });
         });
 
         document.getElementById('cinemaSelect').addEventListener('change', function () {
