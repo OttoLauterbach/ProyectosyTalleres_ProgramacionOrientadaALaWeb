@@ -20,3 +20,4 @@ Para la revisión de la actividad de websockets, se puede acceder al link de la 
 - Para finalizar, puede volver a la pantalla principal al hacer click en Cerrar sesión.
 
 - Observación: Para probar la funcionalidad de Foro, en dos pestañas simultaneas seleccionar la misma película e interactuar por medio de mensajes.
+- Observación 2: Debido a los ajustes realizados hoy (13/07/2024) no es necesario entrar a la carpeta TallerWebSockets/Taller Asiento para evaluar el taller, ya se incluyó la funcionalidad en el link facilitado.
