@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selección de Cine y Películas</title>
+    <title>Selección de Cine y Películas</title>    
+    <link rel="stylesheet" href="chat.css">
     <style>
         body, html {
             font-family: 'GLAMOR', sans-serif;
@@ -188,6 +189,9 @@
         .info-text {
             color: white;
         }
+        #disconnect-btn {
+            visibility: hidden;
+        }
     </style>
     
 </head>
@@ -199,13 +203,10 @@
                 <img src="https://i.imgur.com/lPNGgga.png" alt="Logo" class="logo">
             </div>
             <div class="tab">
-                <a href="CinexUnidosconFacturayBoton-V1.4.html">Cartelera</a>
+                <a href="#form-container">Cartelera</a>
             </div>
             <div class="tab">
-                <a href="https://github.com/yourusername/yourrepo/blob/main/page1.html" target="_blank">Soporte</a>
-            </div>
-            <div class="tab">
-                <a href="#">Cines</a>
+                <a href="#support-container" >Soporte</a>
             </div>
         </div>
         <div class="container" id="form-container">
@@ -235,9 +236,113 @@
             <p><strong>Números de Asientos:</strong> <span id="summary-seats"></span></p>
             <button type="button" id="new-purchase">Realizar otra compra</button>
         </div>
-    </div>
+        
+        <!-- Seccion Soporte -->
+        <div class="container" id="support-container">
+            <div id="chat-log"></div>
+            <div class="information-bubble">
+                <div class="button-group">
+                    <div>
+                        <button class="selectable-btn" id="btn-1">Intensamente 2</button>
+                        <button class="selectable-btn" id="btn-2">Mi Villano Favorito 4</button>
+                        <button class="selectable-btn" id="btn-3">Un Lugar en silencio: Dia Uno</button>
+                        <button class="selectable-btn" id="btn-4">Bad Boys</button>
+                    </div>
+                    <div>                
+                        <h3 class="info-text">Estado del chat:
+                            <small class="hidden" id="status-online">online</small>
+                            <small class="hidden" id="status-offline">offline</small>
+                        </h3>
+                        <input placeholder="Escribe tu nombre aquí" type="text" id="name" disabled />
+                        <button id="enviarName-btn" type="submit" disabled>Iniciar Chat</button>
+                        <button id="disconnect-btn" type="submit" >Cerrar sesión</button>
+                    </div>
+                    
+                    <!-- Ubicación del chat -->
+                    <div class="bottom-right">
+                        <!-- Chat -->
+                        <div class="chat">
+                            <!-- Información del contacto -->
+                            <div class="contact bar">
+                                <div class="pic" id="username-pic"></div>
+                                <div class="name" id="username"></div>
+                                <div class="seen" id="last-seen">Hoy a las 12:56</div>
+                            </div>
 
+                            <div class="messages" id="chat">
+                                <div style="display:none;">
+                                    <div class="time">
+                                        Hoy a las 11:41
+                                    </div>
+                                    <div class="message incoming">
+                                        Oh, ¿cuál es su problema? 🤔
+                                    </div>
+                                    <div class="message">
+                                        Me robaron mi butaca de la función cine 😡
+                                    </div>
+                                </div>
+
+                                    <!-- Burbujas mientras escribe -->
+                                <div class="message" style="display: none;">
+                                    <div class="typing typing-1"></div>
+                                    <div class="typing typing-2"></div>
+                                    <div class="typing typing-3"></div>
+                                </div>
+                            </div>
+                            <!-- Inputs y Forms -->
+                            <form action="#" class="input">
+                                <input placeholder="Escribe tu mensaje aquí" type="text" id = "msg" disabled/>
+                                <i class="fas fa-paper-plane"></i>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+        const formContainer = document.getElementById('form-container'); // Get the form container
+        const summary = document.getElementById('summary');
+
+
+
+        function showContainer(containerId) {
+        // Get all containers with class "container"
+        const containers = document.querySelectorAll('.container');
+
+        // Hide all containers
+        containers.forEach(container => {
+            container.style.display = 'none';
+        });
+
+        // Show the selected container
+        const selectedContainer = document.getElementById(containerId);
+        if (selectedContainer) {
+            selectedContainer.style.display = 'block'; // Or 'flex' if you're using Flexbox
+        }
+        }
+
+        // Initial display: show the first container by default
+        showContainer('form-container');
+
+        // Event listeners for your sidebar tabs
+        document.querySelectorAll('.tab a').forEach(tab => {
+        tab.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Get the target container ID from the href attribute
+            const targetContainerId = event.target.getAttribute('href').substring(1); // Remove the '#' 
+            showContainer(targetContainerId);
+        });
+        });
+
+        // Event listener for the "Realizar otra compra" button
+        document.getElementById('new-purchase').addEventListener('click', () => {
+        showContainer('form-container');
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             const cinemaSelect = document.getElementById('cinemaSelect');
             const movieSelect = document.getElementById('movieSelect');
@@ -437,7 +542,9 @@
             document.getElementById('movieSelect').innerHTML = '';
             document.getElementById('seats-container').innerHTML = '';
         });
-    </script>
+    </script>    
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>   
+    <script src="Cliente.js"></script>
 </body>
 </html>
 
